@@ -6,6 +6,8 @@ import Card from "./components/Card";
 import { Ionicons } from "@expo/vector-icons";
 import Logo from "./components/Logo";
 import Course from "./components/Course";
+import Avatar from "./components/Avatar";
+import { connect } from "react-redux";
 
 export default function App() {
   return (
@@ -13,9 +15,9 @@ export default function App() {
       <SafeAreaView>
         <ScrollView style={{ height: "100%" }}>
           <TitleBar>
-            <Avatar source={require("./assets/avatar.jpg")}></Avatar>
+            <Avatar />
             <Title>Welcome back,</Title>
-            <Name>CodeSlinger</Name>
+            <Name>CodeSlinger v4.2</Name>
             <Ionicons
               name="notifications-sharp"
               size={32}
@@ -73,6 +75,12 @@ export default function App() {
   );
 }
 
+function mapStateToProps(state) {
+  return {
+    name: state.name,
+  };
+}
+
 const Container = styled.View`
   flex: 1;
   background-color: #f0f3f5;
@@ -83,7 +91,7 @@ const TitleBar = styled.View`
   margin-top: 50px;
   padding-left: 80px;
 `;
-
+/*
 const Avatar = styled.Image`
   width: 44px;
   height: 44px;
@@ -94,7 +102,7 @@ const Avatar = styled.Image`
   top: 0;
   left: 0;
 `;
-
+*/
 const Title = styled.Text`
   font-size: 16px;
   color: #b8bece;
